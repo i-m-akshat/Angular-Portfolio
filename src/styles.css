@@ -1,1 +1,270 @@
-/* You can add global styles to this file, and also import other style files */
+/* Base Styles and Colors */
+:root {
+  /* Branding Colors */
+  --color-text-dark: #1f2937;
+  --color-text-light: #6b7280;
+  --color-background: #ffffff;
+  --color-light-bg: #f9fafb;
+  --color-border: #e5e7eb;
+  /* Accent: Deep Violet for 'Wow' (Tailwind Violet 500) */
+  --color-accent: #8b5cf6;
+}
+
+body {
+  font-family: "Inter", sans-serif;
+  background-color: var(--color-background);
+  color: var(--color-text-dark);
+  scroll-behavior: smooth;
+}
+
+.border-custom-grey {
+  border-color: var(--color-border) !important;
+}
+
+.text-custom-grey {
+  color: black !important;
+}
+
+.bg-custom-light {
+  background-color: var(--color-light-bg) !important;
+}
+
+/* Typography Enhancements */
+.h2-style {
+  font-size: 2rem;
+  font-weight: 800;
+  /* Extra bold for section headers */
+  letter-spacing: -0.02em;
+}
+
+/* Accent Styles */
+.text-accent {
+  color: var(--color-accent) !important;
+}
+
+.btn-accent {
+  background-color: var(--color-accent) !important;
+  border-color: var(--color-accent) !important;
+  color: var(--color-background) !important;
+  /* Text color remains white for high contrast on violet */
+}
+
+.btn-accent:hover {
+  background-color: #7c4fd9 !important;
+  /* Slightly darker violet on hover */
+  border-color: #7c4fd9 !important;
+  color: var(--color-background) !important;
+  transform: translateY(-2px);
+}
+
+/* Navigation Hover Effect */
+.navbar-nav .nav-link {
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+.navbar-nav .nav-link::after {
+  content: "";
+  display: block;
+  width: 0;
+  height: 2px;
+  background: var(--color-accent);
+  transition: width 0.3s ease;
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+}
+
+.navbar-nav .nav-link:hover::after {
+  width: 100%;
+}
+
+/* Footer link hover */
+.footer-link:hover {
+  color: var(--color-text-dark) !important;
+}
+
+/* Project Card Shadow Transition - Enhanced */
+.project-card:hover {
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.08) !important;
+  transform: translateY(-5px);
+}
+
+.transition-all {
+  transition: all 0.3s ease;
+}
+
+/* Skills Progress Bar Polish */
+.progress-bar {
+  background-color: var(--color-accent) !important;
+}
+
+/* Interests Card Polish */
+.interest-card {
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.interest-card:hover {
+  border-color: var(--color-accent) !important;
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+/* --- Custom Animations for Entrance and Polish --- */
+
+/* Keyframes for subtle fade-in and slide up */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 20px, 0);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+/* Base class for elements that should animate */
+.animate-on-load {
+  animation-name: fadeInUp;
+  animation-duration: 0.9s;
+  /* Slightly slower for elegance */
+  animation-fill-mode: both;
+  opacity: 0;
+}
+
+/* Specific Animation for Hero elements - Staggered */
+#home .animate-on-load:nth-child(1) {
+  animation-delay: 0.1s;
+}
+
+#home .animate-on-load:nth-child(2) {
+  animation-delay: 0.3s;
+}
+
+#home .animate-on-load:nth-child(3) {
+  animation-delay: 0.5s;
+}
+
+#home .animate-on-load:nth-child(4) {
+  animation-delay: 0.7s;
+}
+
+/* Image */
+
+/* Staggering for main sections */
+.section-content-animate {
+  opacity: 0;
+  animation: fadeInUp 0.8s ease-out forwards;
+  animation-delay: 0.2s;
+}
+/* Smooth collapse transition */
+.collapse {
+  transition: all 0.4s ease-in-out;
+}
+
+/* Subtle shadow hover for expand sections */
+.collapse.show {
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+}
+
+/* Give interest cards a glassy lift effect */
+.interest-card {
+  background: linear-gradient(145deg, #ffffff, #f3f4f6);
+  border: 1px solid var(--color-border);
+  transition: all 0.3s ease, transform 0.25s ease;
+}
+
+.interest-card:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 8px 20px rgba(139, 92, 246, 0.15);
+}
+
+/* Accent for titles */
+h4.text-accent,
+h6.text-accent {
+  letter-spacing: -0.01em;
+}
+
+/* Add gentle glow to icons */
+.interest-card i {
+  transition: transform 0.3s ease, text-shadow 0.3s ease;
+}
+
+.interest-card:hover i {
+  transform: scale(1.2);
+  text-shadow: 0 0 10px rgba(139, 92, 246, 0.3);
+}
+.interest-header-group h3 {
+  font-size: 1.8rem;
+  font-weight: 800;
+}
+
+.image-col {
+  max-width: 100%;
+  /* Default mobile behavior */
+  margin-top: 1.5rem;
+  /* Space on mobile */
+}
+
+@media (min-width: 768px) {
+  .image-col {
+    max-width: 400px;
+    /* Constrain image width on desktop */
+    min-width: 300px;
+    /* Ensure space for the image */
+    margin-top: 0;
+  }
+}
+/* Floating / breathing image effect */
+.floating-container {
+  overflow: hidden;
+  border-radius: 1.5rem;
+  display: inline-block;
+  transition: transform 0.3s ease;
+}
+
+.floating-img {
+  animation: floatUpDown 4s ease-in-out infinite alternate;
+}
+
+@keyframes floatUpDown {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-10px);
+  }
+}
+@keyframes floatUpDown {
+  0% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-10px) rotate(1deg);
+  }
+  100% {
+    transform: translateY(0) rotate(-1deg);
+  }
+}
+/* Make cards feel smoother and interactive */
+.interest-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-radius: 1rem;
+  background: #fff;
+}
+
+.interest-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
+}
+.bg-accent {
+  background-color: #8b5cf6 !important;
+  color: white !important;
+  border: 1px solid #ccc;
+}
